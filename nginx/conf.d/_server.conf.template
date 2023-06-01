@@ -18,13 +18,18 @@ server {
   #  root /var/www/html;
   #  index index.html;
 
-    server_name studio.${DOMAIN}; 
+    server_name studio.${DOMAIN};
 
-    proxy_pass http://studio/;
-    proxy_set_header X-Script-Name /studio;
-    proxy_set_header X-Scheme $scheme;
-    proxy_set_header Host $host;
-    proxy_redirect off;
+
+    location / { 
+
+        proxy_pass http://studio/;
+        proxy_set_header X-Script-Name /studio;
+        proxy_set_header X-Scheme $scheme;
+        proxy_set_header Host $host;
+        proxy_redirect off;
+
+    }
 }
 
 server {
