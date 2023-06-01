@@ -78,19 +78,19 @@ services:
     networks:
       - eiti
 
-  public-server1:
-    image: postgrest/postgrest:v10.1.1
-    container_name: public-server1
-    links:
-      - "db1:db1"
-    environment:
-      PGRST_DB_URI: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db1:5432/${LIVE}
-      PGRST_DB_SCHEMA: publiek
-      PGRST_DB_ANON_ROLE: web_anon
-    depends_on:
-      - db1
-    networks:
-      - eiti
+  # public-server1:
+  #   image: postgrest/postgrest:v10.1.1
+  #   container_name: public-server1
+  #   links:
+  #     - "db1:db1"
+  #   environment:
+  #     PGRST_DB_URI: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db1:5432/${LIVE}
+  #     PGRST_DB_SCHEMA: publiek
+  #     PGRST_DB_ANON_ROLE: web_anon
+  #   depends_on:
+  #     - db1
+  #   networks:
+  #     - eiti
 
   swagger1:
     image: swaggerapi/swagger-ui
