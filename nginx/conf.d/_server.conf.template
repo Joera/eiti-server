@@ -15,12 +15,8 @@ server {
 
 server {
 
-    if ($host = eiti.de-publieke-zaak.nl) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
     listen 80 default;
     server_name eiti.de-publieke-zaak.nl;
-    return 404; # managed by Certbot
+    return 301 https://$host$request_uri;
+
 }
