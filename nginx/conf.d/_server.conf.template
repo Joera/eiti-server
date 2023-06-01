@@ -1,0 +1,17 @@
+# dit bestand zit in de gitignore
+
+# server {
+
+# 	listen 80;
+# 	return 301 https://$host$request_uri;
+# }
+
+server {
+       listen 80 default;
+       root /var/www/html;
+       index index.html;
+       server_name eiti.${DOMAIN}; 
+
+    #   include /etc/nginx/conf.d/img/*locations;
+
+}
