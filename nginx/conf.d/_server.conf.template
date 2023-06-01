@@ -14,9 +14,33 @@ server {
 }
 
 server {
+    
+  #  root /var/www/html;
+  #  index index.html;
+  
+    server_name studio.${DOMAIN}; 
+
+    proxy_pass http://studio/;
+    proxy_set_header X-Script-Name /studio;
+    proxy_set_header X-Scheme $scheme;
+    proxy_set_header Host $host;
+    proxy_redirect off;
+}
+
+server {
 
     listen 80 default;
     server_name eiti.de-publieke-zaak.nl;
     return 301 https://eiti.de-publieke-zaak.nl$request_uri;
+
+}
+
+server {
+
+    listen 80 default;
+    server_name studio.de-publieke-zaak.nl;
+    root /var/www/html;
+    index index.html;
+ #   return 301 https://eiti.de-publieke-zaak.nl$request_uri;
 
 }
