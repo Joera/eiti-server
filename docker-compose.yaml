@@ -1,12 +1,12 @@
 version: "3.7"
 services:
 
-  nginx1:
+  nginx:
     image: custom_nginx
-    container_name: nginx1
+    container_name: nginx
     build:
       context: ..
-      dockerfile: ./docker/nginx.Dockerfile
+      dockerfile: ./nginx.Dockerfile
     restart: always
     volumes:
       - letsencrypt:/etc/letsencrypt
