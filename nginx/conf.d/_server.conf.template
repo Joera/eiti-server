@@ -17,7 +17,7 @@ server {
     
   #  root /var/www/html;
   #  index index.html;
-  
+
     server_name studio.${DOMAIN}; 
 
     proxy_pass http://studio/;
@@ -41,6 +41,6 @@ server {
     server_name studio.de-publieke-zaak.nl;
     root /var/www/html;
     index index.html;
- #   return 301 https://eiti.de-publieke-zaak.nl$request_uri;
+ #   return 301 https://studio.de-publieke-zaak.nl$request_uri;
 
 }
