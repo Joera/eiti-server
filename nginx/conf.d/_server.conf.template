@@ -17,6 +17,6 @@ server {
 
     listen 80 default;
     server_name eiti.de-publieke-zaak.nl;
-    return 301 https://$host$request_uri;
+    return 301 https://eiti.de-publieke-zaak.nl$request_uri;
 
 }
