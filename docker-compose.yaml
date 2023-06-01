@@ -129,33 +129,33 @@ services:
   #   networks:
   #     - eiti
 
-  meta:
-    container_name: supabase-meta
-    image: supabase/postgres-meta:v0.29.0
-    depends_on:
-      - db1 # Disable this if you are using an external Postgres database
-    restart: unless-stopped
-    environment:
-      PG_META_PORT: 8088
-      # PG_META_DB_HOST: ${POSTGRES_HOST}
-      # PG_META_DB_PORT: ${POSTGRES_PORT}
-      # PG_META_DB_NAME: ${POSTGRES_DB}
-      PG_META_DB_USER: ${POSTGRES_USER}
-      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
-    networks:
-      - eiti
+meta:
+  container_name: supabase-meta
+  image: supabase/postgres-meta:v0.29.0
+  depends_on:
+    - db1 # Disable this if you are using an external Postgres database
+  restart: unless-stopped
+  environment:
+    PG_META_PORT: 8088
+    # PG_META_DB_HOST: ${POSTGRES_HOST}
+    # PG_META_DB_PORT: ${POSTGRES_PORT}
+    # PG_META_DB_NAME: ${POSTGRES_DB}
+    PG_META_DB_USER: ${POSTGRES_USER}
+    PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
+  networks:
+    - eiti
 
-  studio1:
-    container_name: supabase-studio
-    image: supabase/studio:latest
-    restart: unless-stopped
-    ports:
-      - 8001:3000/tcp
-    environment:
-      STUDIO_PG_META_URL: http://meta:8088
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    networks:
-      - eiti
+studio1:
+  container_name: supabase-studio
+  image: supabase/studio:latest
+  restart: unless-stopped
+  ports:
+    - 8001:3000/tcp
+  environment:
+    STUDIO_PG_META_URL: http://meta:8088
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  networks:
+    - eiti
 
       # SUPABASE_URL: http://kong:8000
       # SUPABASE_REST_URL: ${PUBLIC_REST_URL}
