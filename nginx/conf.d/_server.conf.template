@@ -21,15 +21,7 @@ server {
     server_name studio.${DOMAIN};
 
 
-    location / { 
-
-        proxy_pass http://studio/;
-        proxy_set_header X-Script-Name /studio;
-        proxy_set_header X-Scheme \$scheme;
-        proxy_set_header Host \$host;
-        proxy_redirect off;
-
-    }
+    include /etc/nginx/conf.d/studio/*locations;
 }
 
 server {
