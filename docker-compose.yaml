@@ -104,7 +104,7 @@ services:
     environment:
       SWAGGER_JSON: /json/swagger.json
     volumes:
-      - ../swagger_json:/json
+      - ./swagger_json:/json
     networks:
       - eiti
 
