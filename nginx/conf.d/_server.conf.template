@@ -1,0 +1,43 @@
+server {
+    
+    root /var/www/html;
+    index index.html;
+    server_name eiti.${DOMAIN}; 
+
+    include /etc/nginx/conf.d/eiti/*locations;
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/eiti.de-publieke-zaak.nl/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/eiti.de-publieke-zaak.nl/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    
+  #  root /var/www/html;
+  #  index index.html;
+
+    server_name studio.${DOMAIN};
+
+
+    include /etc/nginx/conf.d/studio/*locations;
+}
+
+server {
+
+    listen 80;
+    server_name eiti.de-publieke-zaak.nl;
+    return 301 https://eiti.de-publieke-zaak.nl$request_uri;
+
+}
+
+server {
+
+    listen 80;
+    server_name studio.de-publieke-zaak.nl;
+    root /var/www/html;
+    index index.html;
+ #   return 301 https://studio.de-publieke-zaak.nl$request_uri;
+
+}
