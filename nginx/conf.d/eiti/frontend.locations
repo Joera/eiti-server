@@ -1,20 +1,6 @@
-location /staging-vis/ {
-    
-    alias /var/www/html/staging/;
+location / {
 
-    location ~* \.(js|css)$ {
-        try_files $uri /dev/null =404;
-    }
-
-    location ~* \.(eot|otf|ttf|woff|woff2)$ {
-        add_header Access-Control-Allow-Origin *;
-        expires max; 
-    }
-}
-
-location /vis/ {
-
-    alias /var/www/html/production/;
+    alias /var/www/html/live/;
 
     location ~* \.(js|css)$ {
         try_files $uri /dev/null =404;
